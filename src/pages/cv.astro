@@ -4,89 +4,174 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
 ---
 
 <BaseLayout title="Resume" sideBarActiveItemID="cv">
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Profile</div>
-  </div>
+  <div
+    class="mx-auto print:prose-xs print:leading-tight print:space-y-2 print:m-6 print:pb-10"
+  >
+    <div class="mb-5 print:mb-2">
+      <div class="mb-10 print:hidden flex justify-end">
+        <button
+          class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+          onclick="window.print()"
+        >
+          Print PDF
+        </button>
+      </div>
+      <div class="text-3xl w-full font-bold print:text-xl">Overview</div>
+    </div>
 
-  <div class="mb-10 text-justify">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-    aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </div>
+    <div class="mb-10 text-justify print:mb-4">
+      I am a Nanny serving the Brambleton community, specializing with newborns
+      to 6 years with over 15+ years’ experience. I pride myself in becoming a
+      true part of the family. I support the family with daily care, weekend
+      support and ‘date-nights’. I excel at bringing engaging enrichment
+      activities to keep the children active and always learning.
+    </div>
 
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Education</div>
-  </div>
+    <div class="mb-5 print:mb-2">
+      <div class="text-3xl w-full font-bold print:text-xl">Experience</div>
+    </div>
 
-  <div class="time-line-container grid gap-4 mb-10">
-    <TimeLineElement
-      title="Title Name"
-      subtitle="[start year] to [end year] at [Study Center Name], [City], [Country]"
-    />
-    <TimeLineElement
-      title="Title Name"
-      subtitle="[start year] to [end year] at [Study Center Name], [City], [Country]"
-    />
-  </div>
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Experience</div>
-  </div>
-
-  <div class="time-line-container mb-10">
-    <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
+    <div
+      class="time-line-container mb-10 space-y-2 print:space-y-2 print:mb-10"
     >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-    </TimeLineElement>
-    <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
+      <TimeLineElement
+        title="Full-Time Nanny"
+        subtitle="From December 2023 to Current at The Manning Family, Ashburn, VA"
+      >
+        <ul class="list-disc mx-6 print:mx-4">
+          <li>Care for their daughter in her daily needs.</li>
+          <li>Support the family in daily childcare chores and meals.</li>
+        </ul>
+      </TimeLineElement>
+      <TimeLineElement
+        title="Full-Time Nanny"
+        subtitle="From January 2023 to September 2023 at The McCormick Family, Sterling, VA"
+      >
+        <ul class="list-disc mx-6 print:mx-4">
+          <li>Care for their two-year old daughter and newborn son.</li>
+          <li>Support the family in daily childcare chores and meals.</li>
+          <li>
+            Work with both children in learning, play outside and support
+            well-being through outdoor walks, parks, and playdates.
+          </li>
+          <li>
+            Help around the house to keep the kids’ toys, clothes, and
+            nick-nacks contained.
+          </li>
+        </ul>
+      </TimeLineElement>
+      <TimeLineElement
+        title="Full-Time Nanny"
+        subtitle="From September 2020 to December 2022 at The Williams Family, Broadlands, VA"
+      >
+        <ul class="list-disc mx-6 print:mx-4">
+          <li>
+            Cared for their daughter from 4 months old until almost 3 years old.
+          </li>
+          <li>
+            Helped develop daily activity and development plans for positive and
+            enriching skill building.
+          </li>
+          <li>Daily walks in the park, outdoor activities, and walks.</li>
+          <li>
+            Helped in growth of socialization, interaction & communication
+            skills for preparation to pre-kindergarten and kindergarten.
+          </li>
+        </ul>
+      </TimeLineElement>
+      <TimeLineElement
+        title="Full-Time Nanny"
+        subtitle="From January 2015 to July 2020 at The Colatosti Family, Brambleton, VA"
+      >
+        <ul class="list-disc mx-6 print:mx-4">
+          <li>
+            Cared for their daughter from the day she was born until they had to
+            move to Boston.
+          </li>
+          <li>
+            Helped and grew with them as a family, driving, walking, and running
+            with their daughter to activities, dance, swim class, school,
+            events, playdates, and almost every aspect of her life for over five
+            years.
+          </li>
+          <li>
+            Developed deep trust and love with the family and their daughter was
+            on my hip every day no matter where the day took us.
+          </li>
+        </ul>
+      </TimeLineElement>
+      <TimeLineElement
+        title="Full-Time Nanny"
+        subtitle="From January 2013 to December 2014 at The Hines Family, Brambleton, VA"
+      >
+        <ul class="list-disc mx-6 print:mx-4">
+          <li>
+            Cared for their daughter from the day she was born supporting the
+            family with daily tasks.
+          </li>
+        </ul>
+      </TimeLineElement>
+    </div>
+
+    <div class="mb-5 print:mb-10 print:mt-10">
+      <div class="text-3xl w-full font-bold print:text-xl">
+        Training & Certifications
+      </div>
+    </div>
+
+    <ul class="list-disc mx-6 mb-10 grid gap-2 print:mx-4 print:mb-4">
+      <li>Infant & Child CPR</li>
+      <li>Emergency Care Certificate</li>
+      <li>Current Virginia Drives’s License</li>
+    </ul>
+
+    <div class="mb-5 print:mb-2">
+      <div class="text-3xl w-full font-bold print:text-xl">Education</div>
+    </div>
+
+    <ul class="list-disc mx-6 mb-10 grid gap-2 print:mx-4 print:mb-4">
+      <li>
+        <div class="font-bold text-lg">Central Scholar High School</div>
+        <div class="text-sm text-gray-600">
+          1996 to 2000, San Salvador, El Salvador
+        </div>
+      </li>
+    </ul>
+
+    <div class="mb-5 print:mb-2">
+      <div class="text-3xl w-full font-bold print:text-xl">Languages</div>
+    </div>
+
+    <ul class="list-disc mx-6 mb-10 grid gap-2 print:mx-4 print:mb-4">
+      <li>Spanish</li>
+      <li>English</li>
+    </ul>
+
+    <div class="mb-5 print:mb-2">
+      <div class="text-3xl w-full font-bold print:text-xl">Skills</div>
+    </div>
+
+    <ul
+      class="list-disc columns-2 mx-6 mb-10 gap-2 sm:columns-1 print:columns-1 print:mx-4 print:mb-4 leading-relaxed sm:leading-normal"
     >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-    </TimeLineElement>
-    <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-    </TimeLineElement>
+      <li>Creating activities that support learning through play</li>
+      <li>Emotionally Supportive</li>
+      <li>Long-Term Relationship</li>
+      <li>New-Born & Infants (0-6)</li>
+      <li>Enrichment Actives</li>
+      <li>Family Orientated & Reliable</li>
+    </ul>
+
+    <div class="mb-5 print:mb-2">
+      <div class="text-3xl w-full font-bold print:text-xl">References</div>
+      <p class="print:mb-4">
+        References contact information is available on request.
+      </p>
+    </div>
+
+    <ul class="list-disc mx-6 mb-10 grid gap-2 print:mx-4 print:mb-4">
+      <li>Amber Colatosti</li>
+      <li>Saralyn Williams</li>
+    </ul>
   </div>
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Certifications</div>
-  </div>
-
-  <ul class="list-disc mx-6 mb-10 grid gap-2">
-    <li>
-      <a href="#" target="_blank"> Certification Name (with link)</a>
-    </li>
-    <li>
-      <a href="#" target="_blank"> Certification Name (with link)</a>
-    </li>
-  </ul>
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Skills</div>
-  </div>
-
-  <ul class="list-disc md:columns-5 columns-2 mx-6">
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-  </ul>
 </BaseLayout>

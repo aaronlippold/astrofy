@@ -2,6 +2,7 @@
 import SideBarFooter from "./SideBarFooter.astro";
 import { Image } from "astro:assets";
 import SideBarMenu from "./SideBarMenu.astro";
+import ContactInfo from "./ContactInfo.astro";
 const { sideBarActiveItemID } = Astro.props;
 ---
 
@@ -16,6 +17,7 @@ const { sideBarActiveItemID } = Astro.props;
           </div>
         </div>
       </a>
+      <ContactInfo />
     </div>
     <SideBarMenu sideBarActiveItemID={sideBarActiveItemID} />
     <SideBarFooter />

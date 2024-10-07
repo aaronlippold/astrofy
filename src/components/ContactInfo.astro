@@ -1,13 +1,11 @@
 ---
-const today = new Date();
+const { sideBarActiveItemID } = Astro.props;
+const activeClass = "bg-base-300"; // For primary color replace with `active` class
 ---
-<footer class="footer footer-center text-base-content py-6 print:hidden">
-  <div class="container mx-auto px-4">
-    <div class="pb-2">
-      <p class="text-sm">
-        &copy; {today.getFullYear()} Carmelina Ayala
-      </p>
-      <!-- <p class="text-sm">
+
+<div class="px-4 pb-5 pt-1 print:block p-2 bg-base-200">
+    <p class="text-lg font-semibold">Carmelina Ayala</p>
+    <p class="text-sm">
         <a href="https://maps.google.com/?q=23661+Sailfish+Square,+Brambleton,+VA+20148" target="_blank" class="text-blue-500 hover:underline">
           23661 Sailfish Square, Brambleton, VA 20148
         </a>
@@ -21,7 +19,10 @@ const today = new Date();
         <a href="mailto:carmelinaayalapineda@gmail.com" class="text-blue-500 hover:underline">
           carmelinaayalapineda@gmail.com
         </a>
-      </p> -->
-    </div>
+      </p>
   </div>
-</footer>
+
+<script define:vars={{ sideBarActiveItemID: sideBarActiveItemID, activeClass: activeClass }}>
+const activeItemElem = document.getElementById(sideBarActiveItemID);
+activeItemElem && activeItemElem.classList.add(activeClass);
+</script>
