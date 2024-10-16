@@ -1,5 +1,5 @@
 ---
-title: "Sample Nanny Work Agreement"
+title: "Nanny Work Agreement"
 description: "This is an example of my general work agreement with families"
 pubDate: "Oct 6 2024"
 heroImage: "/family-agreement.webp"
