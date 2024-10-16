@@ -4,7 +4,7 @@ description: "This is an example of my general work agreement with families"
 pubDate: "Oct 6 2024"
 heroImage: "/family-agreement.webp"
 ---
-## Nanny Work Agreement
+## Example Nanny Work Agreement
 
 Welcome to our family! The following contract is to ensure we are all on the same page regarding start date, vacation days, sick days, payments, expense reimbursement, expenses and additional guidelines to this agreement below titled “Nanny Responsibilities, Rules, and Daily Schedule”.
 
