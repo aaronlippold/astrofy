@@ -5,8 +5,7 @@ public/post1.docx
 public/post1.pdf
 
 # Netlify build artifacts
-.netlify/build/
-.netlify/v1/functions/ssr/
+.netlify/
 
 # dependencies
 node_modules/
