@@ -10,18 +10,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install pdflatex and pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
+
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: "20" # Specify the Node.js version
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2.2.4
-        with:
-          version: latest
+      - name: Install pnpm
+        run: npm install -g pnpm@latest # Specify the pnpm version
 
       - name: Cache node modules
         uses: actions/cache@v2
@@ -33,11 +36,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
-
-      - name: Install pdflatex and pandoc
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
 
       - name: Build project
         run: pnpm run build
