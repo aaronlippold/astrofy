@@ -16,13 +16,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "22" # Specify the Node.js version
+          node-version: "20" # Specify the Node.js version
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2.2.4
         with:
-          version: 7.5.0 # Specify the pnpm version
-          cache: true
+          version: latest
 
       - name: Cache node modules
         uses: actions/cache@v2
