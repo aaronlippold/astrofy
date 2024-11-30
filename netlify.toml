@@ -1,7 +1,7 @@
 [build]
   command = """
   echo "Installing Pandoc and TeX Live..."
-  apt-get update && apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
+  sudo apt-get update -y && sudo apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
   echo "Pandoc and TeX Live installed."
   which pdflatex
   pdflatex --version
