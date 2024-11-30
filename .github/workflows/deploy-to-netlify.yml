@@ -27,7 +27,7 @@ jobs:
         run: npm install -g pnpm@latest # Specify the pnpm version
 
       - name: Cache node modules
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -43,10 +43,9 @@ jobs:
       - name: Postbuild script
         run: pnpm run postbuild
 
-      - name: Deploy to Netlify
-        uses: netlify/actions/cli@master
+      - uses: jsmrcaga/action-netlify-deploy@master
         with:
-          args: deploy --prod --dir=dist
-        env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_DEPLOY_MESSAGE: "Prod deploy v${{ github.ref }}"
+          NETLIFY_DEPLOY_TO_PROD: true
