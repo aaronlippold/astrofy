@@ -1,10 +1,9 @@
 [build]
-  command = "pnpm run build"
+  command = "pnpm run build && pnpm run postbuild"
   publish = "dist"
 
-[build.lifecycle]
-  [[build.lifecycle.onBuild]]
-    command = """
-    apt-get update && apt-get install -y pandoc
-    pnpm run convert-docs
-    """
+[[build.lifecycle.onBuild]]
+  command = """
+  echo "Installing Pandoc..."
+  apt-get update && apt-get install -y pandoc
+  """
