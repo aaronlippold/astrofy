@@ -1,11 +1,9 @@
 [build]
-  command = "pnpm run build && pnpm run postbuild"
-  publish = "dist"
-
-[[build.lifecycle.onBuild]]
   command = """
   echo "Installing Pandoc and TeX Live..."
   apt-get update && apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
   export PATH=$PATH:/usr/local/texlive/2021/bin/x86_64-linux
   echo "Pandoc and TeX Live installed."
+  pnpm run build && pnpm run postbuild
   """
+  publish = "dist"
