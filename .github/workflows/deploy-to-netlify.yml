@@ -10,11 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install pdflatex and pandoc
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
@@ -24,7 +19,7 @@ jobs:
           node-version: "20" # Specify the Node.js version
 
       - name: Install pnpm
-        run: npm install -g pnpm@latest # Specify the pnpm version
+        run: npm install -g pnpm@9.14 # Specify the pnpm version
 
       - name: Cache node modules
         uses: actions/cache@v4
@@ -37,15 +32,21 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Install pdflatex and pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
+
       - name: Build project
         run: pnpm run build
 
       - name: Postbuild script
         run: pnpm run postbuild
 
-      - uses: jsmrcaga/action-netlify-deploy@master
+      - name: Deploy to Netlify
+        uses: netlify/actions/cli@master
         with:
+          args: deploy --prod --dir=dist
+        env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_DEPLOY_MESSAGE: "Prod deploy v${{ github.ref }}"
-          NETLIFY_DEPLOY_TO_PROD: true
