@@ -7,7 +7,7 @@ heroImage: "/family-agreement.webp"
 
 ## Nanny Work Agreement
 
-[Download PDF Version](./post1.pdf) | [Download Word Version](./post1.docx)
+[Download PDF Version](/post1.pdf) | [Download Word Version](/post1.docx)
 
 Welcome to our family! The following contract ensures we are all on the same page regarding start date, vacation days, sick days, payments, expense reimbursement, and additional guidelines outlined below under “Nanny Responsibilities, Rules, and Daily Schedule.”
 
