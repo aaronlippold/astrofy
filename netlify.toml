@@ -4,6 +4,6 @@
 
 [[build.lifecycle.onBuild]]
   command = """
-  echo "Installing Pandoc..."
-  apt-get update && apt-get install -y pandoc
+  echo "Installing Pandoc and TeX Live..."
+  apt-get update && apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
   """
