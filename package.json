@@ -10,7 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "convert-docs": "echo 'Converting post1.md to DOCX and PDF...' && pandoc ./src/content/blog/post1.md -o ./dist/public/post1.docx && pandoc ./src/content/blog/post1.md -o ./dist/public/post1.pdf",
+    "convert-docs": "echo 'Converting post1.md to DOCX and PDF...' && pandoc ./src/content/blog/post1.md -o ./public/post1.docx && pandoc ./src/content/blog/post1.md -o ./public/post1.pdf",
     "postbuild": "pnpm run convert-docs"
   },
   "dependencies": {
