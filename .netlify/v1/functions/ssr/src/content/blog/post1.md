@@ -7,8 +7,6 @@ heroImage: "/family-agreement.webp"
 
 ## Nanny Work Agreement
 
-[Download PDF Version](./post1.pdf) | [Download Word Version](./post1.docx)
-
 Welcome to our family! The following contract ensures we are all on the same page regarding start date, vacation days, sick days, payments, expense reimbursement, and additional guidelines outlined below under “Nanny Responsibilities, Rules, and Daily Schedule.”
 
 While the agreement below is static, the addendum serves as a working/active agreement as the child(ren) grow and develop through the years and their needs change.
@@ -33,7 +31,7 @@ and **Carmelina Ayala**, and includes the following terms of employment:
 
    The Employee will provide childcare from Monday to Friday during the hours of `work hours`.
 
-   The Employee agrees to work a standard time frame of 35-40 hours per week, referred to hereafter as a `standard work week`, or as agreed to by both parties.
+   The Employee agrees to work a standard time frame of 35-40 hours per week, referred to hereafter as a `standard work week`.
 
 4. **JOB RESPONSIBILITIES**
 
@@ -50,7 +48,7 @@ and **Carmelina Ayala**, and includes the following terms of employment:
       1. The Employee will provide receipts detailing work-related expenses for reimbursement. Miles driven while on the job using the Employee's car will be reimbursed at the IRS Mileage Reimbursement Rate, which covers the cost of gasoline as well as general wear and tear on the car.
       2. The Employee will maintain a mileage log and submit it to the Employer for reimbursement at the end of the week. Trips longer than 20 miles round trip require prior approval via phone, text, or email from at least one Employer.
    5. **PAID VACATION**: The Employee will receive a general total of two weeks of paid vacation per year. The Employee must notify the Employer of vacation dates at least one month in advance. Vacation days do not accumulate and roll over from year to year.
-   6. **SICK LEAVE**: The Employee will receive one week of sick leave in a given calendar year. The Employee agrees to use best efforts to notify the Employer at least 12 hours in advance before being absent due to illness. The Employee understands that the Employer does not provide medical insurance.
+   6. **SICK LEAVE**: The Employee will receive two weeks in a given calendar year. The Employee agrees to use best efforts to notify the Employer at least 12 hours in advance before being absent due to illness. The Employee understands that the Employer does not provide medical insurance.
 
 6. **PAID HOLIDAYS**
 

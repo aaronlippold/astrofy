@@ -1,3 +1,10 @@
 [build]
-  command = "pnpm astro build"
+  command = "pnpm run build"
   publish = "dist"
+
+[build.lifecycle]
+  [[build.lifecycle.onBuild]]
+    command = """
+    apt-get update && apt-get install -y pandoc
+    pnpm run convert-docs
+    """
