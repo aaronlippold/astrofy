@@ -15,7 +15,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "convert-docs": "echo 'Converting documents to DOCX and PDF...' && pandoc ./src/content/blog/post1.md -o ./public/nanny-work-agreement.docx && pandoc ./src/content/blog/post1.md -o ./public/nanny-work-agreement.pdf --pdf-engine=weasyprint && pandoc ./dist/cv/index.html -o ./public/carmelina-ayala-cv.docx --resource-path=public && pandoc ./dist/cv/index.html -o ./public/carmelina-ayala-cv.pdf --pdf-engine=weasyprint --css=src/styles/print-cv.css --resource-path=public",
+    "convert-docs": "echo 'Converting documents to DOCX and PDF...' && cp public/profile.webp . && pandoc ./src/content/blog/post1.md -o ./public/nanny-work-agreement.docx && pandoc ./src/content/blog/post1.md -o ./public/nanny-work-agreement.pdf --pdf-engine=weasyprint && pandoc ./dist/cv/index.html -o ./public/carmelina-ayala-cv.docx --resource-path=.:public && pandoc ./dist/cv/index.html -o ./public/carmelina-ayala-cv.pdf --pdf-engine=weasyprint --css=src/styles/print-cv.css --resource-path=.:public && rm -f profile.webp",
     "postbuild": "pnpm run convert-docs"
   },
   "dependencies": {
