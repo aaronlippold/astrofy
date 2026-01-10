@@ -1,13 +1,13 @@
 ---
 title: "Nanny Work Agreement"
 description: "This is an example of my general work agreement with families"
-pubDate: "Oct 6 2024"
+pubDate: "Jan 10 2026"
 heroImage: "/family-agreement.webp"
 ---
 
 ## Nanny Work Agreement
 
-[Download PDF Version](/post1.pdf) | [Download Word Version](/post1.docx)
+[Download PDF Version](/nanny-work-agreement.pdf) | [Download Word Version](/nanny-work-agreement.docx)
 
 Welcome to our family! **Carmelina Ayala** specializes in providing exceptional care for newborns through 6-year-olds, with over 15 years of professional nanny experience.
 
