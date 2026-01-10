@@ -15,7 +15,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "convert-docs": "echo 'Converting post1.md to DOCX and PDF...' && pandoc ./src/content/blog/post1.md -o ./public/post1.docx && pandoc ./src/content/blog/post1.md -o ./public/post1.pdf",
+    "convert-docs": "echo 'Converting documents to DOCX and PDF...' && pandoc ./src/content/blog/post1.md -o ./public/nanny-work-agreement.docx && pandoc ./src/content/blog/post1.md -o ./public/nanny-work-agreement.pdf --pdf-engine=weasyprint && pandoc ./dist/cv/index.html -o ./public/carmelina-ayala-cv.docx && pandoc ./dist/cv/index.html -o ./public/carmelina-ayala-cv.pdf --pdf-engine=weasyprint --css=src/styles/print-cv.css",
     "postbuild": "pnpm run convert-docs"
   },
   "dependencies": {
