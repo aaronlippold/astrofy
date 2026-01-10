@@ -1,0 +1,65 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.28
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Install pdflatex and pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
+
+      - name: Build project
+        run: pnpm run build
+
+      - name: Verify PDF/DOCX generation
+        run: |
+          echo "Checking for generated documents..."
+          if [ -f "public/post1.pdf" ]; then
+            echo "✓ PDF generated successfully"
+            ls -lh public/post1.pdf
+          else
+            echo "✗ PDF not found"
+            exit 1
+          fi
+          if [ -f "public/post1.docx" ]; then
+            echo "✓ DOCX generated successfully"
+            ls -lh public/post1.docx
+          else
+            echo "✗ DOCX not found"
+            exit 1
+          fi
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: build-output
+          path: |
+            dist/
+            public/*.pdf
+            public/*.docx
+          retention-days: 7
