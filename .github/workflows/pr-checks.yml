@@ -27,10 +27,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Install pdflatex and pandoc
+      - name: Install pandoc and weasyprint
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc texlive-latex-base texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra
+          sudo apt-get install -y pandoc weasyprint
 
       - name: Build project
         run: pnpm run build
@@ -38,18 +38,32 @@ jobs:
       - name: Verify PDF/DOCX generation
         run: |
           echo "Checking for generated documents..."
-          if [ -f "public/post1.pdf" ]; then
-            echo "✓ PDF generated successfully"
-            ls -lh public/post1.pdf
+          if [ -f "public/nanny-work-agreement.pdf" ]; then
+            echo "✓ Work Agreement PDF generated successfully"
+            ls -lh public/nanny-work-agreement.pdf
           else
-            echo "✗ PDF not found"
+            echo "✗ Work Agreement PDF not found"
             exit 1
           fi
-          if [ -f "public/post1.docx" ]; then
-            echo "✓ DOCX generated successfully"
-            ls -lh public/post1.docx
+          if [ -f "public/nanny-work-agreement.docx" ]; then
+            echo "✓ Work Agreement DOCX generated successfully"
+            ls -lh public/nanny-work-agreement.docx
           else
-            echo "✗ DOCX not found"
+            echo "✗ Work Agreement DOCX not found"
+            exit 1
+          fi
+          if [ -f "public/carmelina-ayala-cv.pdf" ]; then
+            echo "✓ CV PDF generated successfully"
+            ls -lh public/carmelina-ayala-cv.pdf
+          else
+            echo "✗ CV PDF not found"
+            exit 1
+          fi
+          if [ -f "public/carmelina-ayala-cv.docx" ]; then
+            echo "✓ CV DOCX generated successfully"
+            ls -lh public/carmelina-ayala-cv.docx
+          else
+            echo "✗ CV DOCX not found"
             exit 1
           fi
 
@@ -60,6 +74,8 @@ jobs:
           name: build-output
           path: |
             dist/
-            public/*.pdf
-            public/*.docx
+            public/nanny-work-agreement.pdf
+            public/nanny-work-agreement.docx
+            public/carmelina-ayala-cv.pdf
+            public/carmelina-ayala-cv.docx
           retention-days: 7
