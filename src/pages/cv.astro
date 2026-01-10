@@ -1,9 +1,11 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import TimeLineElement from "../components/cv/TimeLine.astro";
+
+export const prerender = true;
 ---
 
-<BaseLayout title="Resume" sideBarActiveItemID="cv">
+<BaseLayout title="Carmelina Ayala - Professional Nanny Resume" sideBarActiveItemID="cv">
   <div
     class="mx-auto print:prose-xs print:leading-tight print:space-y-2 print:m-6 print:pb-10"
   >
@@ -15,6 +17,10 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
         >
           Print PDF
         </button>
+      </div>
+      <div class="text-center mb-8 print:mb-4">
+        <h1 class="text-4xl font-bold print:text-2xl">Carmelina Ayala</h1>
+        <p class="text-xl print:text-base">Professional Nanny</p>
       </div>
       <div class="text-3xl w-full font-bold print:text-xl">Overview</div>
     </div>
@@ -47,8 +53,8 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
       class="time-line-container mb-10 space-y-2 print:space-y-2 print:mb-10"
     >
       <TimeLineElement
-        title="Full-Time Nanny"
-        subtitle="From January 2025 to Present with The Back Family, Ashburn, VA"
+        title="The Back Family, Ashburn, VA"
+        subtitle="January 2025 - Present"
       >
         <ul class="list-disc mx-6 print:mx-4">
           <li>Care for their baby boy since three months old, attending to all daily needs.</li>
@@ -65,8 +71,8 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
         </ul>
       </TimeLineElement>
       <TimeLineElement
-        title="Full-Time Nanny"
-        subtitle="From January 2024 to November 2024 with The Manning Family, Ashburn, VA"
+        title="The Manning Family, Ashburn, VA"
+        subtitle="January 2024 - November 2024"
       >
         <ul class="list-disc mx-6 print:mx-4">
           <li>Provided full-time care for their daughter, attending to daily needs and routines.</li>
@@ -75,8 +81,8 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
         </ul>
       </TimeLineElement>
       <TimeLineElement
-        title="Full-Time Nanny"
-        subtitle="From January 2023 to September 2023 with The McCormick Family, Sterling, VA"
+        title="The McCormick Family, Sterling, VA"
+        subtitle="January 2023 - September 2023"
       >
         <ul class="list-disc mx-6 print:mx-4">
           <li>Cared for their daughter (14 months) and newborn son.</li>
@@ -91,8 +97,8 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
         </ul>
       </TimeLineElement>
       <TimeLineElement
-        title="Full-Time Nanny"
-        subtitle="From September 2020 to December 2022 with The Williams Family, Broadlands, VA"
+        title="The Williams Family, Broadlands, VA"
+        subtitle="September 2020 - December 2022"
       >
         <ul class="list-disc mx-6 print:mx-4">
           <li>
@@ -106,15 +112,13 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
             Organized daily walks in the park and other outdoor activities.
           </li>
           <li>
-            Supported the development of socialization, interaction, and
-            communication skills in preparation for pre-kindergarten and
-            kindergarten.
+            Supported the development of socialization, interaction, and communication skills.
           </li>
         </ul>
       </TimeLineElement>
       <TimeLineElement
-        title="Full-Time Nanny"
-        subtitle="From January 2015 to July 2020 with The Colatosti Family, Brambleton, VA"
+        title="The Colatosti Family, Brambleton, VA"
+        subtitle="January 2015 - July 2020"
       >
         <ul class="list-disc mx-6 print:mx-4">
           <li>
