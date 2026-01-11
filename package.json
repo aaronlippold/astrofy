@@ -26,6 +26,7 @@
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.2",
     "astro": "^4.16.16",
+    "astro-font": "^1.1.0",
     "daisyui": "^4.12.14",
     "dayjs": "^1.11.13",
     "sharp": "^0.32.6",

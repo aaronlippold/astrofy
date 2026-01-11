@@ -2,6 +2,7 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import '../styles/global.css';
+import { AstroFont } from 'astro-font';
 
 export interface Props {
 	title: string;
@@ -37,3 +38,18 @@ const { title, description, image = '/social_img.webp', ogType = 'website' } = A
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- Font Optimization -->
+<AstroFont
+	config={[
+		{
+			src: [],
+			name: "Poppins",
+			preload: true,
+			display: "swap",
+			selector: "body",
+			fallback: "sans-serif",
+			googleFontsURL: 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap',
+		},
+	]}
+/>
