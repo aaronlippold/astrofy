@@ -15,7 +15,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "convert-docs": "echo 'Converting documents to DOCX and PDF...' && pandoc ./src/content/blog/post1.md -o ./public/nanny-work-agreement.docx && pandoc ./src/content/blog/post1.md -o ./public/nanny-work-agreement.pdf --pdf-engine=weasyprint && sed 's|src=\"/profile.webp\"|src=\"public/profile.webp\"|g' ./dist/cv/index.html > /tmp/cv-fixed.html && pandoc /tmp/cv-fixed.html -o ./public/carmelina-ayala-cv.docx && pandoc /tmp/cv-fixed.html -o ./public/carmelina-ayala-cv.pdf --pdf-engine=weasyprint --css=src/styles/print-cv.css && rm -f /tmp/cv-fixed.html",
+    "convert-docs": "echo 'Converting documents to DOCX and PDF...' && pandoc ./src/content/blog/post1.md -o ./public/nanny-work-agreement.docx && pandoc ./src/content/blog/post1.md -o ./public/nanny-work-agreement.pdf --pdf-engine=weasyprint && sed -e 's|src=\"/profile.webp\"|src=\"public/profile.webp\"|g' -e 's|src=\"/.netlify/images/|src=\".netlify/images/|g' ./dist/cv/index.html > /tmp/cv-fixed.html && pandoc /tmp/cv-fixed.html -o ./public/carmelina-ayala-cv.docx && pandoc /tmp/cv-fixed.html -o ./public/carmelina-ayala-cv.pdf --pdf-engine=weasyprint --css=src/styles/print-cv.css && rm -f /tmp/cv-fixed.html",
     "postbuild": "pnpm run convert-docs"
   },
   "dependencies": {
