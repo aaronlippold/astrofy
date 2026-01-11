@@ -12,12 +12,8 @@ pandoc ./src/content/blog/post1.md \
   --pdf-engine=weasyprint
 
 # Generate CV documents
-# Copy CV HTML and fix all image paths to be relative
-cp ./dist/cv/index.html /tmp/cv-source.html
-sed -i.bak \
-  -e 's|src="/profile.webp"|src="../../public/profile.webp"|g' \
-  -e 's|src="/.netlify/images/|src="../../.netlify/images/|g' \
-  /tmp/cv-source.html
+# Use Python to strip images from HTML
+python3 scripts/strip-images.py ./dist/cv/index.html /tmp/cv-source.html
 
 pandoc /tmp/cv-source.html \
   -o ./public/carmelina-ayala-cv.docx
@@ -28,6 +24,6 @@ pandoc /tmp/cv-source.html \
   --css=src/styles/print-cv.css
 
 # Cleanup
-rm -f /tmp/cv-source.html /tmp/cv-source.html.bak
+rm -f /tmp/cv-source.html
 
 echo "✓ Documents converted successfully"
