@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/aaronlippold/astrofy/compare/v1.0.0...v1.1.0) (2026-01-11)
+
+
+### Features
+
+* add theme selector, UX improvements, and CI/CD redesign ([#3](https://github.com/aaronlippold/astrofy/issues/3)) ([0056397](https://github.com/aaronlippold/astrofy/commit/0056397a209d727e976eccf59add958e2da029eb))
+
 ## 1.0.0 (2026-01-11)
 
 
