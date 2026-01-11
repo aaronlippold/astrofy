@@ -1,0 +1,101 @@
+/* Hide navigation and UI elements for PDF export */
+.drawer-side,
+.drawer-toggle,
+.navbar,
+header,
+.btn,
+button,
+.print\:hidden {
+  display: none !important;
+}
+
+/* Hide the centered title section - contact info is in header */
+.text-center {
+  display: none !important;
+}
+
+/* Ensure main content is visible */
+main {
+  display: block !important;
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Compact layout for PDF to fit on 2 pages */
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 10pt;
+  line-height: 1.3;
+}
+
+/* Aggressive spacing reduction */
+.mb-5, .mb-8, .mb-10 {
+  margin-bottom: 0.25rem !important;
+}
+
+.mb-10 {
+  margin-bottom: 0.3rem !important;
+}
+
+/* Reduce all heading sizes and margins */
+h1, .text-4xl {
+  font-size: 14pt !important;
+  margin-top: 0.3rem !important;
+  margin-bottom: 0.2rem !important;
+}
+
+h2, h3, .text-3xl, .text-2xl, .text-xl {
+  font-size: 12pt !important;
+  margin-top: 0.3rem !important;
+  margin-bottom: 0.2rem !important;
+  font-weight: bold !important;
+}
+
+/* Tighter paragraph spacing */
+p {
+  margin-top: 0 !important;
+  margin-bottom: 0.3rem !important;
+}
+
+.text-lg, .text-base {
+  font-size: 10pt !important;
+  line-height: 1.3 !important;
+}
+
+/* Compact lists */
+ul {
+  margin-top: 0.2rem !important;
+  margin-bottom: 0.3rem !important;
+  padding-left: 1.2em !important;
+}
+
+li {
+  margin-bottom: 0.1rem !important;
+  line-height: 1.3 !important;
+}
+
+/* Remove text-justify for better spacing */
+.text-justify {
+  text-align: left !important;
+}
+
+/* Header and Footer */
+@page {
+  margin: 0.75in 0.5in 0.75in 0.5in; /* top, right, bottom, left */
+  @top-center {
+    content: "Carmelina Ayala | carmelinaayalapineda@gmail.com | (571) 405-7430 | Ashburn, VA";
+    font-size: 8pt;
+    color: #666;
+    border-bottom: 1px solid #ddd;
+    padding-top: 10pt;
+    padding-bottom: 5pt;
+    margin-bottom: 8pt;
+  }
+  @bottom-center {
+    content: "Carmelina Ayala • Bilingual Care for Growing Families | 0 to 6 Years | Page " counter(page) " of " counter(pages);
+    font-size: 8pt;
+    color: #666;
+  }
+}

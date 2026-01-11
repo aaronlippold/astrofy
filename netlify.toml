@@ -1,10 +1,9 @@
 [build]
-  command = "pnpm run build"
   publish = "dist"
 
 [functions]
-  # If you have functions, specify the directory here
-  # directory = "netlify/functions"
+  external_node_modules = ["astro", "@astrojs/netlify"]
+  node_bundler = "esbuild"
 
 # Headers configuration
 [[headers]]
@@ -22,3 +21,4 @@
 # Environment variables (if needed)
 [build.environment]
   NODE_ENV = "production"
+  NODE_VERSION = "24"
