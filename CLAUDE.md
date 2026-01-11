@@ -160,6 +160,20 @@ netlify deploy --prod --dir=dist
 - Environment: NODE_ENV=production
 - SSR mode requires Netlify Functions support
 
+## GitHub CLI Configuration
+
+**IMPORTANT:** This repository is a fork. To prevent PRs from being created to the upstream repository by mistake:
+
+```bash
+# Set default repository (already configured)
+gh repo set-default aaronlippold/astrofy
+
+# Verify it's set correctly
+gh repo set-default --view
+```
+
+This ensures `gh pr create` and other gh commands default to YOUR fork, not the upstream repository.
+
 ## Important Notes
 
 - **SSR Mode**: Site uses `output: 'server'` with Netlify adapter (not static)

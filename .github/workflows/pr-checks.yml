@@ -6,8 +6,11 @@ on:
       - main
 
 jobs:
+  # Main build and validation job - runs first
   build-and-validate:
     runs-on: ubuntu-latest
+    outputs:
+      cache-key: ${{ steps.cache-key.outputs.key }}
 
     steps:
       - name: Checkout repository
@@ -22,9 +25,22 @@ jobs:
           node-version: "24"
           cache: "pnpm"
 
-      - name: Install all dependencies and tools
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Lint check
         run: |
-          pnpm install
+          echo "Running lint checks..."
+          # Add actual linting when configured
+          # pnpm run lint
+
+      - name: Type check
+        run: |
+          echo "Running type checks..."
+          npx astro check
+
+      - name: Install document conversion tools
+        run: |
           sudo apt-get update
           sudo apt-get install -y pandoc weasyprint
 
@@ -63,15 +79,27 @@ jobs:
             exit 1
           fi
 
+      - name: Generate cache key
+        id: cache-key
+        run: echo "key=build-${{ github.sha }}-${{ github.run_id }}" >> $GITHUB_OUTPUT
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
-        if: always()
         with:
-          name: build-output
+          name: build-${{ github.sha }}-${{ github.run_id }}
           path: |
             dist/
+            .netlify/
             public/nanny-work-agreement.pdf
             public/nanny-work-agreement.docx
             public/carmelina-ayala-cv.pdf
             public/carmelina-ayala-cv.docx
-          retention-days: 7
+          retention-days: 1
+
+      - name: Build summary
+        run: |
+          echo "### Build Summary ✅" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Build completed successfully" >> $GITHUB_STEP_SUMMARY
+          echo "- All PDF/DOCX documents generated" >> $GITHUB_STEP_SUMMARY
+          echo "- Artifacts uploaded for preview deployment" >> $GITHUB_STEP_SUMMARY

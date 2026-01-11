@@ -1,17 +1,44 @@
-name: Deploy to Netlify
+name: Deploy to Netlify Production
 
 on:
-  push:
-    branches:
-      - main
+  # Called by release-please workflow after release creation
+  workflow_call:
+    inputs:
+      version:
+        description: 'Release version'
+        required: false
+        type: string
+      tag-name:
+        description: 'Git tag name'
+        required: false
+        type: string
+    secrets:
+      NETLIFY_TOKEN:
+        required: true
+      NETLIFY_SITE_ID:
+        required: true
+
+  # Allow manual deployment with optional version
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (optional)'
+        required: false
+        type: string
 
 jobs:
-  build:
+  deploy-production:
     runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://carmelina-ayala.netlify.app
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
+        with:
+          # Checkout the tag if provided, otherwise use main
+          ref: ${{ inputs.tag-name || 'main' }}
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -20,20 +47,82 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: "24"
-          cache: "pnpm" # Built-in pnpm caching in v6
+          cache: "pnpm"
 
-      - name: Install all dependencies and tools
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Type check (gate before deployment)
+        run: npx astro check
+
+      - name: Install document conversion tools
         run: |
-          pnpm install
           sudo apt-get update
           sudo apt-get install -y pandoc weasyprint
-          npm install -g netlify-cli
+
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
 
       - name: Build project
         run: pnpm run build
 
-      - name: Deploy to Netlify
-        run: netlify deploy --dir=dist --functions=.netlify/v1/functions --prod
+      - name: Verify build artifacts
+        run: |
+          echo "Verifying build artifacts..."
+          if [ ! -d "dist" ]; then
+            echo "✗ dist/ directory not found"
+            exit 1
+          fi
+          echo "✓ Build directory exists"
+
+          if [ ! -d ".netlify/v1/functions" ]; then
+            echo "✗ Netlify functions not found"
+            exit 1
+          fi
+          echo "✓ Netlify functions directory exists"
+
+          # Verify all PDFs/DOCX were generated
+          for file in "public/nanny-work-agreement.pdf" "public/nanny-work-agreement.docx" \
+                      "public/carmelina-ayala-cv.pdf" "public/carmelina-ayala-cv.docx"; do
+            if [ ! -f "$file" ]; then
+              echo "✗ $file not found"
+              exit 1
+            fi
+            echo "✓ $file exists"
+          done
+
+      - name: Deploy to Netlify Production
+        id: netlify-deploy
+        run: |
+          echo "Deploying to production..."
+          netlify deploy \
+            --dir=dist \
+            --functions=.netlify/v1/functions \
+            --prod \
+            --message="${{ inputs.version && format('Release {0}', inputs.version) || 'Production deployment' }}"
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+      - name: Deployment summary
+        run: |
+          echo "### Production Deployment Complete 🚀" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **URL:** https://carmelina-ayala.netlify.app" >> $GITHUB_STEP_SUMMARY
+          if [ -n "${{ inputs.version }}" ]; then
+            echo "- **Version:** ${{ inputs.version }}" >> $GITHUB_STEP_SUMMARY
+            echo "- **Tag:** ${{ inputs.tag-name }}" >> $GITHUB_STEP_SUMMARY
+          fi
+          echo "- **Deployed at:** $(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_STEP_SUMMARY
+
+      - name: Verify production deployment
+        run: |
+          echo "Waiting for deployment to be live..."
+          sleep 10
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://carmelina-ayala.netlify.app)
+          if [ "$STATUS" -eq 200 ]; then
+            echo "✓ Production site is responding (HTTP $STATUS)"
+          else
+            echo "✗ Production site returned HTTP $STATUS"
+            exit 1
+          fi

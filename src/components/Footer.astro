@@ -1,7 +1,15 @@
 ---
 const today = new Date();
 ---
+
+<noscript>
+  <style>
+    #back-to-top { display: none; }
+  </style>
+</noscript>
+
 <footer class="footer footer-center text-base-content py-6 print:hidden">
+  <button id="back-to-top" class="btn btn-outline m-4" onclick='window.scrollTo({top: 0, behavior: "smooth"});'>Back to Top</button>
   <div class="container mx-auto px-4">
     <div class="pb-2">
       <p class="text-sm">
@@ -25,3 +33,20 @@ const today = new Date();
     </div>
   </div>
 </footer>
+
+<script is:inline>
+  function init() {
+    const doc = document.documentElement;
+    const backToTopButton = document.getElementById("back-to-top");
+
+    if (doc.clientHeight >= doc.scrollHeight - 75) {
+      backToTopButton.style.display = "none";
+    } else {
+      backToTopButton.style.display = "block";
+    }
+  }
+
+  init();
+
+  document.addEventListener("astro:after-swap", init);
+</script>
