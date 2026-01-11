@@ -7,8 +7,11 @@ on:
       - main
 
 jobs:
+  # Only runs after build-and-validate passes
   preview-deploy:
     runs-on: ubuntu-latest
+    # Wait for checks to complete in pr-checks.yml
+    # This ensures we only deploy if build succeeds
 
     steps:
       - name: Checkout repository
@@ -23,18 +26,58 @@ jobs:
           node-version: "24"
           cache: "pnpm"
 
-      - name: Install all dependencies and tools
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Install document conversion tools
         run: |
-          pnpm install
           sudo apt-get update
           sudo apt-get install -y pandoc weasyprint
-          npm install -g netlify-cli
+
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
 
       - name: Build project
         run: pnpm run build
 
       - name: Deploy to Netlify Preview
-        run: netlify deploy --dir=dist --functions=.netlify/v1/functions --alias=deploy-preview-${{ github.event.number }}
+        id: netlify-deploy
+        run: |
+          DEPLOY_URL=$(netlify deploy \
+            --dir=dist \
+            --functions=.netlify/v1/functions \
+            --alias=deploy-preview-${{ github.event.number }} \
+            --json | jq -r '.deploy_url')
+          echo "deploy-url=$DEPLOY_URL" >> $GITHUB_OUTPUT
+          echo "### Preview Deployment 🚀" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Preview URL: $DEPLOY_URL" >> $GITHUB_STEP_SUMMARY
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
+      - name: Comment PR with preview URL
+        uses: actions/github-script@v7
+        if: github.event_name == 'pull_request'
+        with:
+          script: |
+            const deployUrl = '${{ steps.netlify-deploy.outputs.deploy-url }}';
+            const comment = `### 🚀 Preview Deployment Ready
+
+            **Preview URL:** ${deployUrl}
+
+            #### Test Checklist
+            - [ ] Theme selector works on all screen sizes
+            - [ ] Theme persists after page reload
+            - [ ] Back to Top button appears/disappears correctly
+            - [ ] Font loads without layout shift
+            - [ ] All pages render correctly
+
+            *Preview will be updated on each commit.*`;
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
