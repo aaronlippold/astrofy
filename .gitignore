@@ -29,3 +29,12 @@ pnpm-debug.log*
 # Local Netlify folder
 .netlify
 .beads/recovery-context.md
+
+# Claude Code configuration
+.claude/
+
+# Generated documents (created during build)
+public/carmelina-ayala-cv.pdf
+public/carmelina-ayala-cv.docx
+public/nanny-work-agreement.pdf
+public/nanny-work-agreement.docx
