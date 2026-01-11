@@ -33,10 +33,11 @@ jobs:
       - name: Build project
         run: pnpm run build
 
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
+
       - name: Deploy to Netlify
-        uses: netlify/actions/cli@master
-        with:
-          args: deploy --dir=dist --functions=.netlify/v1/functions --prod
+        run: netlify deploy --dir=dist --functions=.netlify/v1/functions --prod
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
