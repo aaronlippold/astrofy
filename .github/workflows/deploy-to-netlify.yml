@@ -22,19 +22,15 @@ jobs:
           node-version: "24"
           cache: "pnpm" # Built-in pnpm caching in v6
 
-      - name: Install dependencies
-        run: pnpm install
-
-      - name: Install pandoc and weasyprint
+      - name: Install all dependencies and tools
         run: |
+          pnpm install
           sudo apt-get update
           sudo apt-get install -y pandoc weasyprint
+          npm install -g netlify-cli
 
       - name: Build project
         run: pnpm run build
-
-      - name: Install Netlify CLI
-        run: npm install -g netlify-cli
 
       - name: Deploy to Netlify
         run: netlify deploy --dir=dist --functions=.netlify/v1/functions --prod
